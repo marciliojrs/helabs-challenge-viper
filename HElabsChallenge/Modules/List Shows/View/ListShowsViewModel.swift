@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct TVShowViewModel {
+    
+    let name: String
+    let posterURL: NSURL
+    
+    init(name: String, posterURL: NSURL) {
+        self.name       = name
+        self.posterURL  = posterURL
+    }
+    
+}

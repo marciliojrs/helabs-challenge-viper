@@ -9,9 +9,13 @@
 import Foundation
 
 protocol ListShowsInteractorInput: class {
-
+    
+    func fetchShows()
+    
 }
 
 protocol ListShowsInteractorOutput: class {
 
+    func handleFetchedShows(shows: [TVShow])
+    
 }

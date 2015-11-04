@@ -7,12 +7,27 @@
 //
 
 import Foundation
+import Alamofire
 
 class ListShowsInteractor: ListShowsInteractorInput {
     
-    // MARK: - Injected Properties -
+    // MARK: - Injected Properties
     
     weak var delegate: ListShowsInteractorOutput?
     var dataManager: DataManagerInterface!
+    var request: Alamofire.Request?
+    
+    // MARK: - ListShowsInteractorInput
+    
+    func fetchShows() {
+        request = dataManager.fetchShows { (result) in
+            switch result {
+            case .Success(let shows):
+                self.delegate?.handleFetchedShows(shows)
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
     
 }

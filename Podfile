@@ -7,6 +7,9 @@ inhibit_all_warnings!
 # Add Application pods here
 target 'HElabsChallenge', :exclusive => true do
     pod 'Swinject'
+    pod 'Alamofire'
+    pod 'Genome'
+    pod 'Nuke'
 end
 
 target :unit_tests, :exclusive => true do

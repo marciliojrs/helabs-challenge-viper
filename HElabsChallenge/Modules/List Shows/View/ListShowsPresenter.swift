@@ -16,5 +16,19 @@ class ListShowsPresenter: ListShowsInteractorOutput {
     weak var listWireframe: ListShowsWireframe?
     weak var interface: ListShowsInterface?
 //    weak var detailWireframe: PostDetailWireframe?
+ 
+    func loadShowsFromServer() {
+        interactor?.fetchShows()
+    }
+    
+    // MARK: - ListShowsInteractorOutput
+    
+    func handleFetchedShows(shows: [TVShow]) {
+        let transformedShows = shows.map { (show) -> TVShowViewModel in
+            return TVShowViewModel(name: show.name, posterURL: show.posterURL!)
+        }
+        
+        interface?.setTVShowsDataSource(transformedShows)
+    }
     
 }

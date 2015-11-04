@@ -10,4 +10,6 @@ import Foundation
 
 protocol ListShowsInterface: class {
     
+    func setTVShowsDataSource(dataSource: [TVShowViewModel])
+    
 }

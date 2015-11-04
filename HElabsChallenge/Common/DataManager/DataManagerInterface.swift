@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol DataManagerInterface {
 
+    func fetchShows(completion: APIResult<[TVShow]> -> Void) -> Alamofire.Request
+    
 }
