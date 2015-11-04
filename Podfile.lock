@@ -15,17 +15,20 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (4.5.1)
   - Specta (1.0.4)
+  - Swinject (0.4)
 
 DEPENDENCIES:
   - Expecta
   - OCMock
   - OHHTTPStubs
   - Specta
+  - Swinject
 
 SPEC CHECKSUMS:
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   OHHTTPStubs: f9ed5d0574877f6008261de9c2728cc1662a6566
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  Swinject: 43b52510d9369fa36c0ea0f013f0c0fd1037f2be
 
 COCOAPODS: 0.39.0

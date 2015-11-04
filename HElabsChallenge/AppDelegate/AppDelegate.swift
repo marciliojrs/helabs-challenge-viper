@@ -10,5 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
+    var listShowsWireframe: ListShowsWireframe?
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        listShowsWireframe = DIContainer.sharedInstance.container.resolve(ListShowsWireframe.self)
+        listShowsWireframe?.addListShowsAtTabBarInWindow(window!)
+        
+        return true
+    }
+    
 }

@@ -1,15 +1,20 @@
 source 'https://github.com/CocoaPods/Specs'
 
 platform :ios, '8.0'
+use_frameworks!
+inhibit_all_warnings!
 
 # Add Application pods here
+target 'HElabsChallenge', :exclusive => true do
+    pod 'Swinject'
+end
 
 target :unit_tests, :exclusive => true do
-  link_with 'UnitTests'
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'OCMock'
-  pod 'OHHTTPStubs'
+    link_with 'UnitTests'
+    pod 'Specta'
+    pod 'Expecta'
+    pod 'OCMock'
+    pod 'OHHTTPStubs'
 end
 
 
