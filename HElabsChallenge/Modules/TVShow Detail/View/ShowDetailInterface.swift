@@ -10,6 +10,8 @@ import Foundation
 
 protocol ShowDetailInterface: class {
     
+    func configureControllerForShowWithId(showId: Int)
+    
     func bindTVShow(viewModel: ShowDetailViewModel?)
     
 }

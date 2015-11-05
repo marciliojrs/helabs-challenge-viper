@@ -31,7 +31,8 @@ class ShowDetailPresenter: ShowDetailInteractorOutput {
             summary: show.summary,
             genres: show.genres,
             airDays: show.scheduleDay,
-            airTime: show.scheduleTime)
+            airTime: show.scheduleTime,
+            episodes: show.episodes)
         
         interface?.bindTVShow(viewModel)
     }

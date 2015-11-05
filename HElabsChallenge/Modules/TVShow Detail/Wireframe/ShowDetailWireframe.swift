@@ -18,7 +18,8 @@ class ShowDetailWireframe {
     // MARK: - Methods
     
     func pushDetailForShowId(showId: Int, fromNavigationController navigationController: UINavigationController) {
-        detailViewController!.showId = showId
+//        detailViewController!.showId = showId
+        detailViewController?.configureControllerForShowWithId(showId)
         navigationController.pushViewController(detailViewController!, animated: true)
     }
     

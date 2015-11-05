@@ -22,22 +22,22 @@ struct Episode: BasicMappable {
     private(set) var airTime: String?
     
     mutating func sequence(map: Map) throws {
-        try id <~ map["id"]
-        try name <~ map["name"]
-        try number <~ map["number"]
-        try season <~ map["season"]
-        try summary <~ map["summary"]
-        try imageURL <~ map["image.original"].transformFromJson { (input: String?) -> NSURL? in
+        try id          <~ map["id"]
+        try name        <~ map["name"]
+        try number      <~ map["number"]
+        try season      <~ map["season"]
+        try summary     <~ map["summary"]
+        try imageURL    <~ map["image.original"].transformFromJson { (input: String?) -> NSURL? in
             guard let path = input else {
                 return nil
             }
             
             return NSURL(string: path)
         }
-        try airDate <~ map["airdate"].transformFromJson { (input: String) -> NSDate? in
+        try airDate     <~ map["airdate"].transformFromJson { (input: String) -> NSDate? in
             return NSDate.date(fromString: input, format: .Custom("yyyy-MM-dd"))
         }
-        try airTime <~ map["airtime"]
+        try airTime     <~ map["airtime"]
     }
     
 }

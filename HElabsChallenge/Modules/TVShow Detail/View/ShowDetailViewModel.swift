@@ -8,6 +8,18 @@
 
 import Foundation
 
+struct ShowDetailEpisodeViewModel {
+    
+    let id: Int
+    let name: String
+    
+    init(id: Int, name: String) {
+        self.id   = id
+        self.name = name
+    }
+    
+}
+
 struct ShowDetailViewModel {
     
     let name: String
@@ -15,8 +27,9 @@ struct ShowDetailViewModel {
     let summary: String?
     let genres: [String]?
     let airOn: String?
+    let sections: [Int: [ShowDetailEpisodeViewModel]]?
     
-    init(name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?) {
+    init(name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?, episodes: [Episode]?) {
         self.name       = name
         self.posterURL  = posterURL
         self.summary    = summary
@@ -26,8 +39,30 @@ struct ShowDetailViewModel {
         if let d = days where d.characters.count > 0 {
             days = d.stringByAppendingString(" at ")
         }
-
         self.airOn  = days?.stringByAppendingString(airTime!)
+        
+        if let episodes = episodes {
+            var seasons = [Int]()
+            episodes.forEach { episode in
+                if (!seasons.contains(episode.season)) {
+                    seasons.append(episode.season)
+                }
+            }
+            
+            sections = [Int: [ShowDetailEpisodeViewModel]]()
+            for season in seasons {
+                let episodesPerSeason = episodes.filter({ (episode) -> Bool in
+                    return episode.season == season
+                })
+                
+                sections![season] = episodesPerSeason.map { episode -> ShowDetailEpisodeViewModel in
+                    return ShowDetailEpisodeViewModel(id: episode.id, name: episode.name)
+                }
+            }
+        }
+        else {
+            sections = nil
+        }
     }
     
 }

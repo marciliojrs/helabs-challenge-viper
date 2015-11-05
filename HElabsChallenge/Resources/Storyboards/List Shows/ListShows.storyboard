@@ -199,19 +199,44 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yot-fP-DzQ">
+                                <rect key="frame" x="0.0" y="203" width="600" height="397"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EpisodeCellIdentifier" id="9d8-xw-sGj">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9d8-xw-sGj" id="8gx-ks-PFY">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ATQ-Xa-FKs" id="5We-hx-aVQ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yot-fP-DzQ" firstAttribute="leading" secondItem="EdA-1p-RR1" secondAttribute="leading" id="3z0-5n-v7R"/>
                             <constraint firstItem="hGK-MT-TSr" firstAttribute="top" secondItem="wOc-6i-fvF" secondAttribute="bottom" id="QaK-44-pv6"/>
+                            <constraint firstItem="Yot-fP-DzQ" firstAttribute="top" secondItem="hGK-MT-TSr" secondAttribute="bottom" id="RfY-f0-yfl"/>
+                            <constraint firstItem="4ba-Ke-wW3" firstAttribute="top" secondItem="Yot-fP-DzQ" secondAttribute="bottom" id="S38-Pw-i5N"/>
                             <constraint firstItem="hGK-MT-TSr" firstAttribute="leading" secondItem="EdA-1p-RR1" secondAttribute="leading" id="tfh-ou-GdZ"/>
                             <constraint firstAttribute="trailing" secondItem="hGK-MT-TSr" secondAttribute="trailing" id="vDv-ah-Y55"/>
+                            <constraint firstAttribute="trailing" secondItem="Yot-fP-DzQ" secondAttribute="trailing" id="zOD-Au-lhB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="airOnLabel" destination="Pef-Kz-9K2" id="p1X-LC-ilC"/>
                         <outlet property="nameLabel" destination="riO-cZ-0AB" id="W2G-8e-Ehb"/>
                         <outlet property="posterImageView" destination="RHa-Wx-ljd" id="Dzk-oH-bqp"/>
+                        <outlet property="tableView" destination="Yot-fP-DzQ" id="hN2-R4-8FU"/>
                         <outlet property="tagListView" destination="L1E-YX-ErD" id="IxC-fD-lmL"/>
                     </connections>
                 </viewController>
