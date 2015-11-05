@@ -15,6 +15,9 @@ class ListShowsInteractor: ListShowsInteractorInput {
     
     weak var delegate: ListShowsInteractorOutput?
     var dataManager: DataManagerInterface!
+    
+    // MARK: - Properties
+    
     var request: Alamofire.Request?
     
     // MARK: - ListShowsInteractorInput

@@ -10,12 +10,13 @@ import Foundation
 import Genome
 
 struct TVShow: BasicMappable {
+    
     private(set) var id: Int!
     private(set) var name: String!
     private(set) var summary: String?
     private(set) var posterURL: NSURL?
-    private(set) var scheduleDay: String!
-    private(set) var scheduleTime: String!
+    private(set) var scheduleDay: [String]?
+    private(set) var scheduleTime: String?
     
     mutating func sequence(map: Map) throws {
         try id           <~ map["id"]
@@ -24,9 +25,8 @@ struct TVShow: BasicMappable {
         try posterURL    <~ map["image.original"].transformFromJson {
             return NSURL(string: $0)
         }
-        try scheduleDay  <~ map["schedule.days"].transformFromJson {
-            return ($0 as Array).first
-        }
+        try scheduleDay  <~ map["schedule.days"]
         try scheduleTime <~ map["schedule.time"]
     }
+    
 }

@@ -53,6 +53,12 @@ class ListShowsVC: UIViewController, ListShowsInterface, UICollectionViewDataSou
     
     // MARK: - UICollectionViewDelegate
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let model = shows[indexPath.row]
+        
+        presenter?.handleCellSelectionForShow(model)
+    }
+    
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         (cell as! TVShowCell).posterImageView.nk_prepareForReuse()
     }

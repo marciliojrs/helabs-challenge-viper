@@ -17,6 +17,7 @@ struct DIContainer {
     init() {
         commonInjections()
         listShowsModuleInjections()
+        showDetailModuleInjections()
     }
     
     private func commonInjections() {
@@ -43,7 +44,7 @@ struct DIContainer {
             
             wireframe.listShowsViewController = r.resolve(ListShowsVC.self)
             wireframe.rootWireframe = r.resolve(RootWireframe.self)
-//            wireframe.postDetailWireframe = r.resolve(PostDetailWireframe.self)
+            wireframe.showDetailWireframe = r.resolve(ShowDetailWireframe.self)
             
             return wireframe
         }
@@ -67,7 +68,47 @@ struct DIContainer {
         }.initCompleted { (r, presenter) in
             presenter.interface = r.resolve(ListShowsVC.self)
             presenter.listWireframe = r.resolve(ListShowsWireframe.self)
-//                presenter.detailWireframe = r.resolve(PostDetailWireframe.self)
+        }
+    }
+    
+    private func showDetailModuleInjections() {
+        let storyboard = SwinjectStoryboard.create(name: "ListShows", bundle: NSBundle.mainBundle(), container: self.container)
+        
+        container.register(ShowDetailVC.self) { (r) in
+            let controller = storyboard.instantiateViewControllerWithIdentifier("ShowDetailViewIdentifier") as! ShowDetailVC
+            
+            return controller
+        }.initCompleted { (r, controller) in
+            controller.presenter = r.resolve(ShowDetailPresenter.self)
+        }
+        
+        container.register(ShowDetailWireframe.self) { (r) in
+            let wireframe = ShowDetailWireframe()
+            
+            wireframe.detailViewController = r.resolve(ShowDetailVC.self)
+            
+            return wireframe
+        }
+        
+        container.register(ShowDetailInteractor.self) { (r) in
+            let interactor = ShowDetailInteractor()
+            
+            interactor.dataManager = r.resolve(APIClient.self)
+            
+            return interactor
+        }.initCompleted { (r, interactor) in
+            interactor.delegate = r.resolve(ShowDetailPresenter.self)
+        }
+        
+        container.register(ShowDetailPresenter.self) { (r) in
+            let presenter = ShowDetailPresenter()
+            
+            presenter.interactor = r.resolve(ShowDetailInteractor.self)
+            presenter.detailWireframe = r.resolve(ShowDetailWireframe.self)
+            
+            return presenter
+        }.initCompleted { (r, presenter) in
+            presenter.interface = r.resolve(ShowDetailVC.self)
         }
     }
     

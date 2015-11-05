@@ -12,5 +12,6 @@ import Alamofire
 protocol DataManagerInterface {
 
     func fetchShows(completion: APIResult<[TVShow]> -> Void) -> Alamofire.Request
+    func fetchShowWithId(showId: Int, completion: APIResult<TVShow> -> Void) -> Alamofire.Request
     
 }

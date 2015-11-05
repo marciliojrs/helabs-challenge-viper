@@ -15,6 +15,7 @@ class ListShowsWireframe {
     
     var rootWireframe: RootWireframe?
     var listShowsViewController: ListShowsVC?
+    var showDetailWireframe: ShowDetailWireframe?
     
     // MARK: - Navigation Flow Control -
     
@@ -25,4 +26,7 @@ class ListShowsWireframe {
         rootWireframe?.addNewViewController(navigationController, inTabBarFromWindow: window)
     }
     
+    func presentTVShowDetailWithId(showId: Int) {
+        showDetailWireframe?.pushDetailForShowId(showId, fromNavigationController: listShowsViewController!.navigationController!)
+    }
 }

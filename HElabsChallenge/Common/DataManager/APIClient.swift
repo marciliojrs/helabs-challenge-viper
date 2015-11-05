@@ -40,6 +40,25 @@ struct APIClient: DataManagerInterface {
         }
     }
     
+    func fetchShowWithId(showId: Int, completion: APIResult<TVShow> -> Void) -> Alamofire.Request {
+        return Alamofire.request(APIRouter.TVShows(id: showId)).responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .Success(let value):
+                do {
+                    let json = try self.toJson(value)
+                    let show = try TVShow.mappedInstance(json)
+
+                    completion(.Success(show))
+                }
+                catch {
+                    completion(.Failure(error))
+                }
+            case .Failure(let error):
+                completion(.Failure(error))
+            }
+        })
+    }
+    
 }
 
 extension APIClient {

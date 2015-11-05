@@ -1,23 +1,23 @@
 //
-//  ListShowsViewModel.swift
+//  ShowDetailViewModel.swift
 //  HElabsChallenge
 //
-//  Created by Marcilio Junior on 11/4/15.
+//  Created by Marcilio Junior on 11/5/15.
 //  Copyright © 2015 HElabs. All rights reserved.
 //
 
 import Foundation
 
-struct TVShowViewModel {
+struct ShowDetailViewModel {
     
-    let id: Int
     let name: String
     let posterURL: NSURL
+    let summary: String
     
-    init(id: Int, name: String, posterURL: NSURL) {
-        self.id         = id
+    init(name: String, posterURL: NSURL, summary: String) {
         self.name       = name
         self.posterURL  = posterURL
+        self.summary    = summary
     }
     
 }
