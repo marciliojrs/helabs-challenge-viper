@@ -19,18 +19,18 @@ enum APIRouter: URLRequestConvertible {
         let result: (method: Alamofire.Method, path: String, parameters: [String: AnyObject]?) = {
             switch self {
             case .TVShows(let id) where id != nil:
-                return (.GET, "/shows/\(id!)", nil)
+                return (.GET, "/shows/\(id!)", ["embed":"episodes"])
             case .TVShows(_):
                 return (.GET, "/shows", nil)
             }
         }()
         
         let URL = NSURL(string: APIRouter.baseURLString)!
-        
+
         let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
         URLRequest.HTTPMethod = result.method.rawValue
-        
-        let encoding = Alamofire.ParameterEncoding.JSON
+
+        let encoding = Alamofire.ParameterEncoding.URLEncodedInURL
         
         return encoding.encode(URLRequest, parameters: result.parameters).0
     }

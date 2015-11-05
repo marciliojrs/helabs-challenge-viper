@@ -26,7 +26,13 @@ class ShowDetailPresenter: ShowDetailInteractorOutput {
     // MARK: - ListShowsInteractorOutput
     
     func handleFetchedShow(show: TVShow) {
-        let viewModel = ShowDetailViewModel(name: show.name, posterURL: show.posterURL!, summary: show.summary!)
+        let viewModel = ShowDetailViewModel(name: show.name,
+            posterURL: show.posterURL,
+            summary: show.summary,
+            genres: show.genres,
+            airDays: show.scheduleDay,
+            airTime: show.scheduleTime)
+        
         interface?.bindTVShow(viewModel)
     }
         

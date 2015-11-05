@@ -138,13 +138,6 @@
                                             <constraint firstAttribute="width" constant="90" id="aZI-Jr-4C2"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Summary&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-RC-QQw">
-                                        <rect key="frame" x="106" y="25" width="486" height="108"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A18-7Z-g75" userLabel="Separator">
                                         <rect key="frame" x="0.0" y="138" width="600" height="1"/>
                                         <animations/>
@@ -153,22 +146,50 @@
                                             <constraint firstAttribute="height" constant="0.5" id="yHp-i5-wh7"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-YX-ErD" customClass="TagListView" customModule="TagListView">
+                                        <rect key="frame" x="106" y="27" width="486" height="16"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pef-Kz-9K2">
+                                        <rect key="frame" x="106" y="48" width="486" height="14.5"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="L1E-YX-ErD" firstAttribute="trailing" secondItem="riO-cZ-0AB" secondAttribute="trailing" id="0VI-nP-E7I"/>
+                                    <constraint firstItem="Pef-Kz-9K2" firstAttribute="trailing" secondItem="L1E-YX-ErD" secondAttribute="trailing" id="1RG-ON-S4a"/>
+                                    <constraint firstItem="L1E-YX-ErD" firstAttribute="top" secondItem="riO-cZ-0AB" secondAttribute="bottom" constant="5" id="2WE-WA-KK8"/>
                                     <constraint firstItem="riO-cZ-0AB" firstAttribute="leading" secondItem="RHa-Wx-ljd" secondAttribute="trailing" constant="8" id="7hJ-5n-oHu"/>
-                                    <constraint firstItem="mfr-RC-QQw" firstAttribute="trailing" secondItem="riO-cZ-0AB" secondAttribute="trailing" id="FYG-zn-MUJ"/>
                                     <constraint firstAttribute="trailing" secondItem="riO-cZ-0AB" secondAttribute="trailing" constant="8" id="Lvn-IG-irq"/>
                                     <constraint firstItem="RHa-Wx-ljd" firstAttribute="top" secondItem="hGK-MT-TSr" secondAttribute="top" constant="5" id="M01-Pm-fWe"/>
                                     <constraint firstItem="A18-7Z-g75" firstAttribute="leading" secondItem="hGK-MT-TSr" secondAttribute="leading" id="NET-fl-h4K"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RHa-Wx-ljd" secondAttribute="bottom" constant="5" id="OME-eU-Sth"/>
+                                    <constraint firstAttribute="bottom" secondItem="RHa-Wx-ljd" secondAttribute="bottom" constant="5" id="OME-eU-Sth"/>
+                                    <constraint firstItem="Pef-Kz-9K2" firstAttribute="leading" secondItem="L1E-YX-ErD" secondAttribute="leading" id="OYb-06-2zr"/>
                                     <constraint firstItem="A18-7Z-g75" firstAttribute="leading" secondItem="RHa-Wx-ljd" secondAttribute="trailing" id="QVe-mt-lQu"/>
+                                    <constraint firstItem="L1E-YX-ErD" firstAttribute="leading" secondItem="riO-cZ-0AB" secondAttribute="leading" id="QfN-Zb-Opw"/>
                                     <constraint firstAttribute="bottom" secondItem="A18-7Z-g75" secondAttribute="bottom" id="XaJ-tT-zFe"/>
-                                    <constraint firstItem="mfr-RC-QQw" firstAttribute="leading" secondItem="riO-cZ-0AB" secondAttribute="leading" id="YFT-RQ-vrm"/>
-                                    <constraint firstItem="A18-7Z-g75" firstAttribute="top" relation="lessThanOrEqual" secondItem="mfr-RC-QQw" secondAttribute="bottom" constant="5" id="aaz-zk-c7a"/>
                                     <constraint firstItem="RHa-Wx-ljd" firstAttribute="leading" secondItem="hGK-MT-TSr" secondAttribute="leading" constant="8" id="eCt-W3-Lct"/>
-                                    <constraint firstItem="mfr-RC-QQw" firstAttribute="top" secondItem="riO-cZ-0AB" secondAttribute="bottom" constant="3" id="gT0-7G-DTz"/>
+                                    <constraint firstItem="Pef-Kz-9K2" firstAttribute="top" secondItem="L1E-YX-ErD" secondAttribute="bottom" constant="5" id="eho-C2-kDt"/>
                                     <constraint firstAttribute="trailing" secondItem="A18-7Z-g75" secondAttribute="trailing" id="mkp-XP-48c"/>
                                     <constraint firstItem="riO-cZ-0AB" firstAttribute="top" secondItem="RHa-Wx-ljd" secondAttribute="top" id="q5R-zp-Whp"/>
                                 </constraints>
@@ -188,9 +209,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="airOnLabel" destination="Pef-Kz-9K2" id="p1X-LC-ilC"/>
                         <outlet property="nameLabel" destination="riO-cZ-0AB" id="W2G-8e-Ehb"/>
-                        <outlet property="posterImageView" destination="RHa-Wx-ljd" id="xbc-hn-mgb"/>
-                        <outlet property="summaryLabel" destination="mfr-RC-QQw" id="7D1-7L-xug"/>
+                        <outlet property="posterImageView" destination="RHa-Wx-ljd" id="Dzk-oH-bqp"/>
+                        <outlet property="tagListView" destination="L1E-YX-ErD" id="IxC-fD-lmL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTr-8P-ft9" userLabel="First Responder" sceneMemberID="firstResponder"/>

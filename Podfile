@@ -10,6 +10,9 @@ target 'HElabsChallenge', :exclusive => true do
     pod 'Alamofire'
     pod 'Genome'
     pod 'Nuke'
+    
+    pod 'TagListView'
+    pod 'SwiftDate'
 end
 
 target :unit_tests, :exclusive => true do

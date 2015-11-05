@@ -11,13 +11,23 @@ import Foundation
 struct ShowDetailViewModel {
     
     let name: String
-    let posterURL: NSURL
-    let summary: String
+    let posterURL: NSURL?
+    let summary: String?
+    let genres: [String]?
+    let airOn: String?
     
-    init(name: String, posterURL: NSURL, summary: String) {
+    init(name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?) {
         self.name       = name
         self.posterURL  = posterURL
         self.summary    = summary
+        self.genres     = genres
+        
+        var days = airDays?.joinWithSeparator(",")
+        if let d = days where d.characters.count > 0 {
+            days = d.stringByAppendingString(" at ")
+        }
+
+        self.airOn  = days?.stringByAppendingString(airTime!)
     }
     
 }

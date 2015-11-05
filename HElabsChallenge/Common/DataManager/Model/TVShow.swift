@@ -17,6 +17,8 @@ struct TVShow: BasicMappable {
     private(set) var posterURL: NSURL?
     private(set) var scheduleDay: [String]?
     private(set) var scheduleTime: String?
+    private(set) var genres: [String]?
+    private(set) var episodes: [Episode]?
     
     mutating func sequence(map: Map) throws {
         try id           <~ map["id"]
@@ -27,6 +29,8 @@ struct TVShow: BasicMappable {
         }
         try scheduleDay  <~ map["schedule.days"]
         try scheduleTime <~ map["schedule.time"]
+        try genres       <~ map["genres"]
+        try episodes     <~ map["_embedded.episodes"]
     }
     
 }

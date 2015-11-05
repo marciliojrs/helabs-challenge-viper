@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Nuke
+import TagListView
 
 class ShowDetailVC: UIViewController, ShowDetailInterface {
 
@@ -20,7 +21,8 @@ class ShowDetailVC: UIViewController, ShowDetailInterface {
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var airOnLabel: UILabel!
+    @IBOutlet weak var tagListView: TagListView!
     
     // MARK: - Properties
     
@@ -38,18 +40,25 @@ class ShowDetailVC: UIViewController, ShowDetailInterface {
     
     func bindTVShow(viewModel: ShowDetailViewModel?) {
         guard let viewModel = viewModel else {
-            posterImageView.image = nil
-            nameLabel.text = ""
-            summaryLabel.text = ""
+            posterImageView.image   = nil
+            nameLabel.text          = ""
+            airOnLabel.text         = ""
+            tagListView.removeAllTags()
             
             return
         }
         
         posterImageView.nk_prepareForReuse()
-        posterImageView.nk_setImageWithURL(viewModel.posterURL)
+        posterImageView.nk_setImageWithURL(viewModel.posterURL!)
         
         nameLabel.text = viewModel.name
-        summaryLabel.text = viewModel.summary
+        airOnLabel.text = viewModel.airOn
+        
+        if let genres = viewModel.genres {
+            for genre in genres {
+                tagListView.addTag(genre)
+            }
+        }
     }
     
 }
