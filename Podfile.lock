@@ -18,6 +18,7 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (4.5.1)
   - Specta (1.0.4)
+  - SpringIndicator (1.2.1)
   - SwiftDate (1.2)
   - Swinject (0.4)
   - TagListView (0.3.1)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - OCMock
   - OHHTTPStubs
   - Specta
+  - SpringIndicator
   - SwiftDate
   - Swinject
   - TagListView
@@ -42,6 +44,7 @@ SPEC CHECKSUMS:
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   OHHTTPStubs: f9ed5d0574877f6008261de9c2728cc1662a6566
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  SpringIndicator: 2e66169e2595c00cc3ab34329d6bdbeab90680f0
   SwiftDate: 49ebd4efb5f82336cfc2b1d8a6622f47d4b17370
   Swinject: 43b52510d9369fa36c0ea0f013f0c0fd1037f2be
   TagListView: 17ceea2f6a4eac2bb31fe5faa9c0903a2428e64b

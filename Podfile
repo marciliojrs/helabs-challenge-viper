@@ -13,6 +13,7 @@ target 'HElabsChallenge', :exclusive => true do
     
     pod 'TagListView'
     pod 'SwiftDate'
+    pod 'SpringIndicator'
 end
 
 target :unit_tests, :exclusive => true do

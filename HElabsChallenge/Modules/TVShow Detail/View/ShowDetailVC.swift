@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Nuke
 import TagListView
+import SpringIndicator
 
 class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource, UITableViewDelegate {
 
@@ -24,6 +25,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     @IBOutlet weak var airOnLabel: UILabel!
     @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var springIndicator: SpringIndicator!
     
     // MARK: - Properties
     
@@ -33,6 +35,8 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     
     func configureControllerForShowWithId(showId: Int) {
         _ = view
+        
+        springIndicator.startAnimation()
         presenter?.fetchShowDetailWithId(showId)
     }
     
@@ -43,9 +47,12 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
             return
         }
         
+        springIndicator.stopAnimation(false)
+        
         posterImageView.nk_prepareForReuse()
         posterImageView.nk_setImageWithURL(viewModel.posterURL!)
         
+        title = viewModel.name
         nameLabel.text  = viewModel.name
         airOnLabel.text = viewModel.airOn
         
@@ -56,6 +63,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
         }
         
         sections = viewModel.sections
+        tableView.hidden = false
         tableView.reloadData()
     }
     
@@ -97,6 +105,8 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     // MARK: - Helper
     
     func clearScreen() {
+        title = ""
+        
         posterImageView.image   = nil
         nameLabel.text          = ""
         airOnLabel.text         = ""
@@ -104,6 +114,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
         tagListView.removeAllTags()
         
         sections = nil
+        tableView.hidden = true
         tableView.reloadData()
     }
     

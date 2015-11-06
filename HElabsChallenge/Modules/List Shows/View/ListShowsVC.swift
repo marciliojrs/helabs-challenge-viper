@@ -30,6 +30,7 @@ class ListShowsVC: UIViewController, ListShowsInterface, UICollectionViewDataSou
         super.viewDidLoad()
     
         title = "TV Shows"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         presenter?.loadShowsFromServer()
     }
     

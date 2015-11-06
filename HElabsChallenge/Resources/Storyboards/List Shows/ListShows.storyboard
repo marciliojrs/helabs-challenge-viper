@@ -172,6 +172,24 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OmW-uC-MVQ" customClass="SpringIndicator" customModule="SpringIndicator">
+                                        <rect key="frame" x="285.5" y="15" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="I8Y-dy-pF6"/>
+                                            <constraint firstAttribute="width" constant="30" id="Ihs-LO-r7V"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.32895815372467041" green="0.51807236671447754" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="animating" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,6 +197,7 @@
                                     <constraint firstItem="L1E-YX-ErD" firstAttribute="trailing" secondItem="riO-cZ-0AB" secondAttribute="trailing" id="0VI-nP-E7I"/>
                                     <constraint firstItem="Pef-Kz-9K2" firstAttribute="trailing" secondItem="L1E-YX-ErD" secondAttribute="trailing" id="1RG-ON-S4a"/>
                                     <constraint firstItem="L1E-YX-ErD" firstAttribute="top" secondItem="riO-cZ-0AB" secondAttribute="bottom" constant="5" id="2WE-WA-KK8"/>
+                                    <constraint firstItem="OmW-uC-MVQ" firstAttribute="centerX" secondItem="hGK-MT-TSr" secondAttribute="centerX" id="65T-E1-djs"/>
                                     <constraint firstItem="riO-cZ-0AB" firstAttribute="leading" secondItem="RHa-Wx-ljd" secondAttribute="trailing" constant="8" id="7hJ-5n-oHu"/>
                                     <constraint firstAttribute="trailing" secondItem="riO-cZ-0AB" secondAttribute="trailing" constant="8" id="Lvn-IG-irq"/>
                                     <constraint firstItem="RHa-Wx-ljd" firstAttribute="top" secondItem="hGK-MT-TSr" secondAttribute="top" constant="5" id="M01-Pm-fWe"/>
@@ -188,6 +207,7 @@
                                     <constraint firstItem="A18-7Z-g75" firstAttribute="leading" secondItem="RHa-Wx-ljd" secondAttribute="trailing" id="QVe-mt-lQu"/>
                                     <constraint firstItem="L1E-YX-ErD" firstAttribute="leading" secondItem="riO-cZ-0AB" secondAttribute="leading" id="QfN-Zb-Opw"/>
                                     <constraint firstAttribute="bottom" secondItem="A18-7Z-g75" secondAttribute="bottom" id="XaJ-tT-zFe"/>
+                                    <constraint firstItem="OmW-uC-MVQ" firstAttribute="top" secondItem="hGK-MT-TSr" secondAttribute="top" constant="15" id="caz-Nq-HQK"/>
                                     <constraint firstItem="RHa-Wx-ljd" firstAttribute="leading" secondItem="hGK-MT-TSr" secondAttribute="leading" constant="8" id="eCt-W3-Lct"/>
                                     <constraint firstItem="Pef-Kz-9K2" firstAttribute="top" secondItem="L1E-YX-ErD" secondAttribute="bottom" constant="5" id="eho-C2-kDt"/>
                                     <constraint firstAttribute="trailing" secondItem="A18-7Z-g75" secondAttribute="trailing" id="mkp-XP-48c"/>
@@ -204,7 +224,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EpisodeCellIdentifier" id="9d8-xw-sGj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EpisodeCellIdentifier" id="9d8-xw-sGj">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9d8-xw-sGj" id="8gx-ks-PFY">
@@ -236,6 +256,7 @@
                         <outlet property="airOnLabel" destination="Pef-Kz-9K2" id="p1X-LC-ilC"/>
                         <outlet property="nameLabel" destination="riO-cZ-0AB" id="W2G-8e-Ehb"/>
                         <outlet property="posterImageView" destination="RHa-Wx-ljd" id="Dzk-oH-bqp"/>
+                        <outlet property="springIndicator" destination="OmW-uC-MVQ" id="CrQ-Sx-rth"/>
                         <outlet property="tableView" destination="Yot-fP-DzQ" id="hN2-R4-8FU"/>
                         <outlet property="tagListView" destination="L1E-YX-ErD" id="IxC-fD-lmL"/>
                     </connections>
