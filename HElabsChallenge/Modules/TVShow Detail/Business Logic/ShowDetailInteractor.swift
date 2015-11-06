@@ -23,7 +23,8 @@ class ShowDetailInteractor: ShowDetailInteractorInput {
         dataManager.fetchShowWithId(showId) { (result) in
             switch result {
             case .Success(let show):
-                self.delegate?.handleFetchedShow(show)
+                let isFavorited = self.checkIfShowIsFavorited(showId)
+                self.delegate?.handleFetchedShow(show, isFavorited: isFavorited)
             case .Failure(let error):
                 print(error)
             }
@@ -42,6 +43,25 @@ class ShowDetailInteractor: ShowDetailInteractorInput {
                 print(error)
             }
         }
+    }
+    
+    // MARK: - Helper
+    
+    private func checkIfShowIsFavorited(showId: Int) -> Bool {
+        let favoriteShow = entity(name: FavoriteShowModel.entityName, context: CoreDataStack.defaultStack!.mainContext)
+        let request = FetchRequest<FavoriteShowModel>(entity: favoriteShow)
+        request.predicate = NSPredicate(format: "id = %@", argumentArray: [showId])
+        
+        var isFavorite: Bool
+        do {
+            let results = try fetch(request: request, inContext: CoreDataStack.defaultStack!.mainContext)
+            isFavorite = results.count > 0
+        }
+        catch {
+            isFavorite = false
+        }
+        
+        return isFavorite
     }
     
 }

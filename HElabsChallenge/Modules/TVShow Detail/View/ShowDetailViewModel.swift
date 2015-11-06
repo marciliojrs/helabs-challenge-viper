@@ -29,13 +29,15 @@ struct ShowDetailViewModel {
     let genres: [String]?
     let airOn: String?
     let sections: [Int: [ShowDetailEpisodeViewModel]]?
+    let isFavorited: Bool
     
-    init(id: Int, name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?, episodes: [Episode]?) {
-        self.id         = id
-        self.name       = name
-        self.posterURL  = posterURL
-        self.summary    = summary
-        self.genres     = genres
+    init(id: Int, name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?, episodes: [Episode]?, favorited: Bool) {
+        self.id          = id
+        self.name        = name
+        self.posterURL   = posterURL
+        self.summary     = summary
+        self.genres      = genres
+        self.isFavorited = favorited
         
         var days = airDays?.joinWithSeparator(",")
         if let d = days where d.characters.count > 0 {

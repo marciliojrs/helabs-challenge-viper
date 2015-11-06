@@ -29,7 +29,7 @@ class ShowDetailPresenter: ShowDetailInteractorOutput {
     
     // MARK: - ListShowsInteractorOutput
     
-    func handleFetchedShow(show: TVShow) {
+    func handleFetchedShow(show: TVShow, isFavorited: Bool) {
         let viewModel = ShowDetailViewModel(id: show.id,
             name: show.name,
             posterURL: show.posterURL,
@@ -37,7 +37,8 @@ class ShowDetailPresenter: ShowDetailInteractorOutput {
             genres: show.genres,
             airDays: show.scheduleDay,
             airTime: show.scheduleTime,
-            episodes: show.episodes)
+            episodes: show.episodes,
+            favorited: isFavorited)
         
         interface?.bindTVShow(viewModel)
     }

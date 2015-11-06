@@ -49,6 +49,8 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
         
         self.viewModel = viewModel
         
+        navigationItem.rightBarButtonItem?.enabled = !viewModel.isFavorited
+        
         springIndicator.stopAnimation(false)
         
         posterImageView.nk_prepareForReuse()
@@ -107,6 +109,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     
     @IBAction func favoriteButtonTap(sender: AnyObject) {
         presenter?.saveFavoriteShow(viewModel!)
+        navigationItem.rightBarButtonItem?.enabled = false
     }
     
     // MARK: - Helper

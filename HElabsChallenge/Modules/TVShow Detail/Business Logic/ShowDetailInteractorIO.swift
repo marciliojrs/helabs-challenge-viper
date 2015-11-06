@@ -17,6 +17,6 @@ protocol ShowDetailInteractorInput: class {
 
 protocol ShowDetailInteractorOutput: class {
     
-    func handleFetchedShow(show: TVShow)
+    func handleFetchedShow(show: TVShow, isFavorited: Bool)
     
 }
