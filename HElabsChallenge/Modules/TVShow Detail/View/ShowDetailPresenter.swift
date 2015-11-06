@@ -23,10 +23,15 @@ class ShowDetailPresenter: ShowDetailInteractorOutput {
         interface?.bindTVShow(nil)
     }
     
+    func saveFavoriteShow(viewModel: ShowDetailViewModel) {
+        interactor?.saveFavoriteShow(viewModel)
+    }
+    
     // MARK: - ListShowsInteractorOutput
     
     func handleFetchedShow(show: TVShow) {
-        let viewModel = ShowDetailViewModel(name: show.name,
+        let viewModel = ShowDetailViewModel(id: show.id,
+            name: show.name,
             posterURL: show.posterURL,
             summary: show.summary,
             genres: show.genres,

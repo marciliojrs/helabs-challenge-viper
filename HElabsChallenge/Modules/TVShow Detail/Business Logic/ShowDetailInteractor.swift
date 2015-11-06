@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import JSQCoreDataKit
+import CoreData
 
 class ShowDetailInteractor: ShowDetailInteractorInput {
     
@@ -22,6 +24,20 @@ class ShowDetailInteractor: ShowDetailInteractorInput {
             switch result {
             case .Success(let show):
                 self.delegate?.handleFetchedShow(show)
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func saveFavoriteShow(show: ShowDetailViewModel) {
+        let favoriteShow = NSEntityDescription.insertNewObjectForEntityForName(FavoriteShowModel.entityName, inManagedObjectContext: CoreDataStack.defaultStack!.mainContext) as? FavoriteShowModel
+        favoriteShow?.id   = show.id
+        favoriteShow?.name = show.name
+        
+        saveContext(CoreDataStack.defaultStack!.mainContext) { (result) in
+            switch result {
+            case .Success: break
             case .Failure(let error):
                 print(error)
             }

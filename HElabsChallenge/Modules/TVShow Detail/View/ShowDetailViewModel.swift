@@ -22,6 +22,7 @@ struct ShowDetailEpisodeViewModel {
 
 struct ShowDetailViewModel {
     
+    let id: Int
     let name: String
     let posterURL: NSURL?
     let summary: String?
@@ -29,7 +30,8 @@ struct ShowDetailViewModel {
     let airOn: String?
     let sections: [Int: [ShowDetailEpisodeViewModel]]?
     
-    init(name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?, episodes: [Episode]?) {
+    init(id: Int, name: String, posterURL: NSURL?, summary: String?, genres: [String]?, airDays:[String]?, airTime: String?, episodes: [Episode]?) {
+        self.id         = id
         self.name       = name
         self.posterURL  = posterURL
         self.summary    = summary

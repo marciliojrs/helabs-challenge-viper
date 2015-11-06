@@ -252,6 +252,13 @@
                             <constraint firstAttribute="trailing" secondItem="Yot-fP-DzQ" secondAttribute="trailing" id="zOD-Au-lhB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Wn5-XH-QeU">
+                        <barButtonItem key="rightBarButtonItem" title="Favorite" id="Dn3-tl-uFN">
+                            <connections>
+                                <action selector="favoriteButtonTap:" destination="ATQ-Xa-FKs" id="v7C-fG-Ag1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="airOnLabel" destination="Pef-Kz-9K2" id="p1X-LC-ilC"/>
                         <outlet property="nameLabel" destination="riO-cZ-0AB" id="W2G-8e-Ehb"/>
@@ -263,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTr-8P-ft9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="279"/>
+            <point key="canvasLocation" x="997" y="279"/>
         </scene>
     </scenes>
 </document>

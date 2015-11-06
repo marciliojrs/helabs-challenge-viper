@@ -11,6 +11,7 @@ import Foundation
 protocol ShowDetailInteractorInput: class {
  
     func fetchShowDetail(showId: Int)
+    func saveFavoriteShow(show: ShowDetailViewModel)
     
 }
 

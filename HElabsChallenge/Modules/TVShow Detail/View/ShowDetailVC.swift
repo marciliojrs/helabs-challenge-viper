@@ -29,7 +29,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     
     // MARK: - Properties
     
-    var sections: [Int: [ShowDetailEpisodeViewModel]]?
+    var viewModel: ShowDetailViewModel?
  
     // MARK: - ShowDetailInterface
     
@@ -47,6 +47,8 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
             return
         }
         
+        self.viewModel = viewModel
+        
         springIndicator.stopAnimation(false)
         
         posterImageView.nk_prepareForReuse()
@@ -62,7 +64,6 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
             }
         }
         
-        sections = viewModel.sections
         tableView.hidden = false
         tableView.reloadData()
     }
@@ -70,7 +71,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     // MARK: - UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        guard let sections = sections else {
+        guard let sections = viewModel?.sections else {
             return 0
         }
         
@@ -78,7 +79,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = sections else {
+        guard let sections = viewModel?.sections else {
             return 0
         }
         
@@ -89,7 +90,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EpisodeCellIdentifier", forIndexPath: indexPath)
         
-        let episodes = sections![indexPath.section + 1]
+        let episodes = viewModel?.sections![indexPath.section + 1]
         let model = episodes![indexPath.row]
         cell.textLabel?.text = model.name
         
@@ -100,6 +101,12 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Season \(section + 1)"
+    }
+    
+    // MARK: - IBAction
+    
+    @IBAction func favoriteButtonTap(sender: AnyObject) {
+        presenter?.saveFavoriteShow(viewModel!)
     }
     
     // MARK: - Helper
@@ -113,7 +120,7 @@ class ShowDetailVC: UIViewController, ShowDetailInterface, UITableViewDataSource
         
         tagListView.removeAllTags()
         
-        sections = nil
+        viewModel = nil
         tableView.hidden = true
         tableView.reloadData()
     }

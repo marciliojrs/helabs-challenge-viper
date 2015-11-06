@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Nuke
+import JSQCoreDataKit
 
 class ListShowsVC: UIViewController, ListShowsInterface, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -28,7 +29,7 @@ class ListShowsVC: UIViewController, ListShowsInterface, UICollectionViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         title = "TV Shows"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         presenter?.loadShowsFromServer()

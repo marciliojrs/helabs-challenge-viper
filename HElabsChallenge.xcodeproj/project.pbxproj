@@ -11,6 +11,9 @@
 		179B00CCAFB89572EF91E018 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C848E86E3C859CC5B5E7DB6 /* Foundation.framework */; };
 		2DBAC5DABFA8CAD3ECFCA8CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A63FA2705E604F67D573FA /* LaunchScreen.storyboard */; };
 		3BE6AE63794269F1846C7036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20CCA0286440486636BD84 /* AppDelegate.swift */; };
+		AD05C1EE1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD05C1EC1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodeld */; };
+		AD05C1F11BECDC35000DA53F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05C1F01BECDC35000DA53F /* CoreDataStack.swift */; };
+		AD05C1F41BECEAF9000DA53F /* FavoriteShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05C1F31BECEAF9000DA53F /* FavoriteShowModel.swift */; };
 		AD07E9271BEAA043009AC13B /* ShowDetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07E9261BEAA043009AC13B /* ShowDetailWireframe.swift */; };
 		AD07E9291BEAA04F009AC13B /* ShowDetailInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07E9281BEAA04F009AC13B /* ShowDetailInteractorIO.swift */; };
 		AD07E92B1BEAA057009AC13B /* ShowDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07E92A1BEAA057009AC13B /* ShowDetailInteractor.swift */; };
@@ -62,6 +65,9 @@
 		582027580B043A3DFFE59072 /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5C848E86E3C859CC5B5E7DB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		71A63FA2705E604F67D573FA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD05C1ED1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HElabsChallengeModel.xcdatamodel; sourceTree = "<group>"; };
+		AD05C1F01BECDC35000DA53F /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AD05C1F31BECEAF9000DA53F /* FavoriteShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteShowModel.swift; sourceTree = "<group>"; };
 		AD07E9261BEAA043009AC13B /* ShowDetailWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailWireframe.swift; sourceTree = "<group>"; };
 		AD07E9281BEAA04F009AC13B /* ShowDetailInteractorIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailInteractorIO.swift; sourceTree = "<group>"; };
 		AD07E92A1BEAA057009AC13B /* ShowDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailInteractor.swift; sourceTree = "<group>"; };
@@ -175,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				42EC8AACED8DD39EA53DB3AF /* Info.plist */,
+				AD05C1EC1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 		7ACBA19F34008C0983C26FC3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AD05C1EF1BECDBD1000DA53F /* CoreData */,
 				ADE71DBA1BEA3A430016A22F /* DataManager */,
 				ADE71DA01BEA27E10016A22F /* DIContainer.swift */,
 			);
@@ -222,6 +230,23 @@
 				2C20CCA0286440486636BD84 /* AppDelegate.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		AD05C1EF1BECDBD1000DA53F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AD05C1F21BECEADD000DA53F /* Entity */,
+				AD05C1F01BECDC35000DA53F /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AD05C1F21BECEADD000DA53F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AD05C1F31BECEAF9000DA53F /* FavoriteShowModel.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		AD07E9221BEAA02E009AC13B /* TVShow Detail */ = {
@@ -613,6 +638,7 @@
 				ADE71DB21BEA2A5D0016A22F /* ListShowsInterface.swift in Sources */,
 				ADE71DC41BEA435F0016A22F /* APIRouter.swift in Sources */,
 				3BE6AE63794269F1846C7036 /* AppDelegate.swift in Sources */,
+				AD05C1F41BECEAF9000DA53F /* FavoriteShowModel.swift in Sources */,
 				ADE71DBC1BEA3A5D0016A22F /* APIClient.swift in Sources */,
 				AD07E92D1BEAA060009AC13B /* ShowDetailPresenter.swift in Sources */,
 				AD14DF3E1BEBC4AB006A9F78 /* Episode.swift in Sources */,
@@ -621,6 +647,8 @@
 				AD14DF381BEB9F46006A9F78 /* ShowDetailViewModel.swift in Sources */,
 				ADE71DA41BEA28470016A22F /* RootWireframe.swift in Sources */,
 				ADE71DAE1BEA2A310016A22F /* ListShowsInteractor.swift in Sources */,
+				AD05C1F11BECDC35000DA53F /* CoreDataStack.swift in Sources */,
+				AD05C1EE1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodeld in Sources */,
 				AD07E92F1BEAA069009AC13B /* ShowDetailInterface.swift in Sources */,
 				ADE71DBE1BEA3A820016A22F /* DataManagerInterface.swift in Sources */,
 				ADE71DC71BEA482D0016A22F /* TVShowCell.swift in Sources */,
@@ -857,6 +885,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AD05C1EC1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AD05C1ED1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodel */,
+			);
+			currentVersion = AD05C1ED1BECDB6B000DA53F /* HElabsChallengeModel.xcdatamodel */;
+			path = HElabsChallengeModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1291BAF489AC3D6A12421EB6 /* Project object */;
 }
