@@ -10,8 +10,12 @@ import UIKit
 import CoreData
 import JSQCoreDataKit
 
-class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class FavoritesListVC: UIViewController, FavoritesListInterface, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
+    // MARK: - Injected Properties
+    
+    var presenter: FavoritesListPresenter?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -26,7 +30,18 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         super.viewDidLoad()
         
         setupFetchedResultsController()
+        
+        title = "Favorites"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     // MARK: - Helper
@@ -56,11 +71,20 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        let object = fetchedResultsController?.objectAtIndexPath(indexPath) as! FavoriteShowModel
+        let favoriteModel = fetchedResultsController?.objectAtIndexPath(indexPath) as! FavoriteShowModel
         
-        cell.textLabel?.text = object.name
+        cell.textLabel?.text = favoriteModel.name
+        cell.accessoryType = .DisclosureIndicator
         
         return cell
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let favoriteModel = fetchedResultsController?.objectAtIndexPath(indexPath) as! FavoriteShowModel
+        
+        presenter?.handleCellSelectionForShow(favoriteModel.id)
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

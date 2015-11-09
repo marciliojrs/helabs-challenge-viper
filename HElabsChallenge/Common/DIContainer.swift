@@ -43,7 +43,7 @@ struct DIContainer {
         container.register(ListShowsWireframe.self) { (r) in
             let wireframe = ListShowsWireframe()
             
-            wireframe.listShowsViewController = r.resolve(ListShowsVC.self)
+            wireframe.viewController = r.resolve(ListShowsVC.self)
             wireframe.rootWireframe = r.resolve(RootWireframe.self)
             wireframe.showDetailWireframe = r.resolve(ShowDetailWireframe.self)
             
@@ -86,7 +86,7 @@ struct DIContainer {
         container.register(ShowDetailWireframe.self) { (r) in
             let wireframe = ShowDetailWireframe()
             
-            wireframe.detailViewController = r.resolve(ShowDetailVC.self)
+            wireframe.viewController = r.resolve(ShowDetailVC.self)
             
             return wireframe
         }
@@ -116,19 +116,30 @@ struct DIContainer {
     private func favoritesModuleInjections() {
         let storyboard = SwinjectStoryboard.create(name: "Favorites", bundle: NSBundle.mainBundle(), container: container)
         
-        container.register(FavoritesVC.self) { r in
-            let controller = storyboard.instantiateViewControllerWithIdentifier("FavoritesViewIdentifier") as! FavoritesVC
+        container.register(FavoritesListVC.self) { r in
+            let controller = storyboard.instantiateViewControllerWithIdentifier("FavoritesViewIdentifier") as! FavoritesListVC
             
             return controller
+        }.initCompleted { (r, controller) in
+            controller.presenter = r.resolve(FavoritesListPresenter.self)
         }
         
         container.register(FavoritesWireframe.self) { r in
             let wireframe = FavoritesWireframe()
             
-            wireframe.viewController = r.resolve(FavoritesVC.self)
+            wireframe.viewController = r.resolve(FavoritesListVC.self)
             wireframe.rootWireframe = r.resolve(RootWireframe.self)
+            wireframe.showDetailWireframe = r.resolve(ShowDetailWireframe.self)
             
             return wireframe
+        }
+        
+        container.register(FavoritesListPresenter.self) { r in
+            let presenter = FavoritesListPresenter()
+            
+            presenter.wireframe = r.resolve(FavoritesWireframe.self)
+            
+            return presenter
         }
     }
     

@@ -25,7 +25,7 @@
         <!--Favorites-->
         <scene sceneID="CcL-Nf-Kzr">
             <objects>
-                <viewController storyboardIdentifier="FavoritesViewIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="SNr-hM-L1q" customClass="FavoritesVC" customModule="HElabsChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesViewIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="SNr-hM-L1q" customClass="FavoritesListVC" customModule="HElabsChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MdK-c2-dlR"/>
                         <viewControllerLayoutGuide type="bottom" id="lFi-j3-anG"/>

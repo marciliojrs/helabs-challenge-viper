@@ -13,13 +13,13 @@ class ShowDetailWireframe {
 
     // MARK: - Injected Properties
     
-    var detailViewController: ShowDetailVC?
+    var viewController: ShowDetailInterface?
     
     // MARK: - Methods
     
     func pushDetailForShowId(showId: Int, fromNavigationController navigationController: UINavigationController) {
-        detailViewController?.configureControllerForShowWithId(showId)
-        navigationController.pushViewController(detailViewController!, animated: true)
+        viewController?.configureControllerForShowWithId(showId)
+        navigationController.pushViewController(viewController as! UIViewController, animated: true)
     }
     
 }

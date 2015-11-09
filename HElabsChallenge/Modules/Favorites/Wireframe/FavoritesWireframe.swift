@@ -13,16 +13,21 @@ class FavoritesWireframe {
     
     // MARK: - Injected Properties
     
-    var viewController: FavoritesVC?
+    var viewController: FavoritesListInterface?
     var rootWireframe: RootWireframe?
+    var showDetailWireframe: ShowDetailWireframe?
     
     // MARK: - Navigation Flow Control
     
     func addFavoritesAtTabBarInWindow(window: UIWindow) {
-        let navigationController = UINavigationController(rootViewController: viewController!)
+        let navigationController = UINavigationController(rootViewController: viewController as! UIViewController)
         navigationController.tabBarItem.title = "Favorites"
         
         rootWireframe?.addNewViewController(navigationController, inTabBarFromWindow: window)
+    }
+    
+    func presentShowDetailWithId(showId: Int) {
+        showDetailWireframe?.pushDetailForShowId(showId, fromNavigationController: (viewController as! UIViewController).navigationController!)
     }
     
 }
