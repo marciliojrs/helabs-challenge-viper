@@ -11,13 +11,13 @@ import UIKit
 
 class ListShowsWireframe {
 
-    // MARK: - Injected Properties -
+    // MARK: - Injected Properties
     
     var rootWireframe: RootWireframe?
     var listShowsViewController: ListShowsVC?
     var showDetailWireframe: ShowDetailWireframe?
     
-    // MARK: - Navigation Flow Control -
+    // MARK: - Navigation Flow Control
     
     func addListShowsAtTabBarInWindow(window: UIWindow) {
         let navigationController = UINavigationController(rootViewController: listShowsViewController!)
@@ -29,4 +29,5 @@ class ListShowsWireframe {
     func presentTVShowDetailWithId(showId: Int) {
         showDetailWireframe?.pushDetailForShowId(showId, fromNavigationController: listShowsViewController!.navigationController!)
     }
+    
 }

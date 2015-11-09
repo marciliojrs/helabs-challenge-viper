@@ -13,10 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var listShowsWireframe: ListShowsWireframe?
+    var favoritesWireframe: FavoritesWireframe?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         listShowsWireframe = DIContainer.sharedInstance.container.resolve(ListShowsWireframe.self)
+        favoritesWireframe = DIContainer.sharedInstance.container.resolve(FavoritesWireframe.self)
+        
         listShowsWireframe?.addListShowsAtTabBarInWindow(window!)
+        favoritesWireframe?.addFavoritesAtTabBarInWindow(window!)
         
         return true
     }

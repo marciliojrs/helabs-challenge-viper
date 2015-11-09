@@ -18,6 +18,7 @@ struct DIContainer {
         commonInjections()
         listShowsModuleInjections()
         showDetailModuleInjections()
+        favoritesModuleInjections()
     }
     
     private func commonInjections() {
@@ -30,7 +31,7 @@ struct DIContainer {
     }
     
     private func listShowsModuleInjections() {
-        let storyboard = SwinjectStoryboard.create(name: "ListShows", bundle: NSBundle.mainBundle(), container: self.container)
+        let storyboard = SwinjectStoryboard.create(name: "ListShows", bundle: NSBundle.mainBundle(), container: container)
         
         container.register(ListShowsVC.self) { (r) in
             let controller = storyboard.instantiateViewControllerWithIdentifier("ListShowsViewIdentifier") as! ListShowsVC
@@ -72,7 +73,7 @@ struct DIContainer {
     }
     
     private func showDetailModuleInjections() {
-        let storyboard = SwinjectStoryboard.create(name: "ListShows", bundle: NSBundle.mainBundle(), container: self.container)
+        let storyboard = SwinjectStoryboard.create(name: "ListShows", bundle: NSBundle.mainBundle(), container: container)
         
         container.register(ShowDetailVC.self) { (r) in
             let controller = storyboard.instantiateViewControllerWithIdentifier("ShowDetailViewIdentifier") as! ShowDetailVC
@@ -109,6 +110,25 @@ struct DIContainer {
             return presenter
         }.initCompleted { (r, presenter) in
             presenter.interface = r.resolve(ShowDetailVC.self)
+        }
+    }
+    
+    private func favoritesModuleInjections() {
+        let storyboard = SwinjectStoryboard.create(name: "Favorites", bundle: NSBundle.mainBundle(), container: container)
+        
+        container.register(FavoritesVC.self) { r in
+            let controller = storyboard.instantiateViewControllerWithIdentifier("FavoritesViewIdentifier") as! FavoritesVC
+            
+            return controller
+        }
+        
+        container.register(FavoritesWireframe.self) { r in
+            let wireframe = FavoritesWireframe()
+            
+            wireframe.viewController = r.resolve(FavoritesVC.self)
+            wireframe.rootWireframe = r.resolve(RootWireframe.self)
+            
+            return wireframe
         }
     }
     
